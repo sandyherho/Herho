@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if notfound %}
+	{{ notfound }}
+{% else %}
+	{% if crypto.Response %}
+		Sorry, {{quote}} doesn't exist. Please try again!
+	{% endif %}
+	{% for key,value in crypto.DISPLAY.items %}
+		<div class="jumbotron">
+		  <h1 class="display-4">{{ key }}</h1>
+	      <strong>Price</strong>: {{ value.IDR.PRICE }}<br/>
+	      <strong>Day High</strong>: {{ value.IDR.HIGHDAY }}<br/>
+	      <strong>Day Low</strong>: {{ value.IDR.LOWDAY }}<br/>
+	      <strong>Market Cap</strong>: {{ value.IDR.MKTCAP }}<br/>
+		</div>
+		<br/><br/>
+	{% endfor %}
+{% endif %}
+{% endblock %}
